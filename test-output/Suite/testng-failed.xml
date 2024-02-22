@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="framework.TestNgListners"/>
+  </listeners>
+  <test thread-count="5" parallel="classes" name="Test1(failed)">
+    <classes>
+      <class name="Testcases.TC01_RegisterUser">
+        <methods>
+          <include name="RegisterUserS1"/>
+          <include name="close"/>
+          <include name="initialize"/>
+        </methods>
+      </class> <!-- Testcases.TC01_RegisterUser -->
+      <class name="Testcases.TC02_LoginUserValidCredentials">
+        <methods>
+          <include name="close"/>
+          <include name="initialize"/>
+          <include name="ValidUser"/>
+        </methods>
+      </class> <!-- Testcases.TC02_LoginUserValidCredentials -->
+    </classes>
+  </test> <!-- Test1(failed) -->
+  <test thread-count="5" parallel="classes" name="Test2(failed)">
+    <classes>
+      <class name="Testcases.TC06_Contact_Us_Form">
+        <methods>
+          <include name="contactUS"/>
+          <include name="close"/>
+          <include name="initialize"/>
+        </methods>
+      </class> <!-- Testcases.TC06_Contact_Us_Form -->
+      <class name="Testcases.TC04_LogoutUser">
+        <methods>
+          <include name="Logoutuser"/>
+          <include name="close"/>
+          <include name="initialize"/>
+        </methods>
+      </class> <!-- Testcases.TC04_LogoutUser -->
+      <class name="Testcases.TC05_ExistingUser">
+        <methods>
+          <include name="ValidExistingUser"/>
+          <include name="initialize"/>
+          <include name="close"/>
+        </methods>
+      </class> <!-- Testcases.TC05_ExistingUser -->
+    </classes>
+  </test> <!-- Test2(failed) -->
+  <test thread-count="5" parallel="classes" name="Test3(failed)">
+    <classes>
+      <class name="Testcases.TC08_Verify_All_Product_and_Details">
+        <methods>
+          <include name="close"/>
+          <include name="initialize"/>
+          <include name="ViewAllProductdetails"/>
+        </methods>
+      </class> <!-- Testcases.TC08_Verify_All_Product_and_Details -->
+    </classes>
+  </test> <!-- Test3(failed) -->
+  <test thread-count="5" parallel="classes" name="Test4(failed)">
+    <classes>
+      <class name="Testcases.TC12_Add_Products_in_Cart">
+        <methods>
+          <include name="Addproducttocart"/>
+          <include name="close"/>
+          <include name="initialize"/>
+        </methods>
+      </class> <!-- Testcases.TC12_Add_Products_in_Cart -->
+    </classes>
+  </test> <!-- Test4(failed) -->
+  <test thread-count="5" parallel="classes" name="Test5(failed)">
+    <classes>
+      <class name="Testcases.TC15_Place_Order_And_Register_before_Checkout">
+        <methods>
+          <include name="Initilaize"/>
+          <include name="PlaceOrder"/>
+          <include name="close"/>
+        </methods>
+      </class> <!-- Testcases.TC15_Place_Order_And_Register_before_Checkout -->
+      <class name="Testcases.TC13_Verify_Product_quantity_in_Cart">
+        <methods>
+          <include name="initialize"/>
+          <include name="AddProductCount"/>
+          <include name="close"/>
+        </methods>
+      </class> <!-- Testcases.TC13_Verify_Product_quantity_in_Cart -->
+    </classes>
+  </test> <!-- Test5(failed) -->
+  <test thread-count="5" parallel="classes" name="Test6(failed)">
+    <classes>
+      <class name="Testcases.TC18_View_Category_Products">
+        <methods>
+          <include name="Initilaize"/>
+          <include name="close"/>
+          <include name="ViewbyCategory"/>
+        </methods>
+      </class> <!-- Testcases.TC18_View_Category_Products -->
+      <class name="Testcases.TC16_Place_order_Login_before_Checkout">
+        <methods>
+          <include name="PlaceOrderLoginonCheckout"/>
+          <include name="close"/>
+          <include name="Initilaize"/>
+        </methods>
+      </class> <!-- Testcases.TC16_Place_order_Login_before_Checkout -->
+    </classes>
+  </test> <!-- Test6(failed) -->
+  <test thread-count="5" parallel="classes" name="Test7(failed)">
+    <classes>
+      <class name="Testcases.TC20_Search_Products_and_Verify_Cart_After_Login">
+        <methods>
+          <include name="SearchProduct"/>
+          <include name="Initilaize"/>
+          <include name="close"/>
+        </methods>
+      </class> <!-- Testcases.TC20_Search_Products_and_Verify_Cart_After_Login -->
+      <class name="Testcases.TC19_View_Cart_Brand_Products">
+        <methods>
+          <include name="Initilaize"/>
+          <include name="tearDown"/>
+          <include name="ViewbyBrands"/>
+        </methods>
+      </class> <!-- Testcases.TC19_View_Cart_Brand_Products -->
+      <class name="Testcases.TC21_Add_Review_on_Product">
+        <methods>
+          <include name="initialize"/>
+          <include name="close"/>
+          <include name="AddReview"/>
+        </methods>
+      </class> <!-- Testcases.TC21_Add_Review_on_Product -->
+    </classes>
+  </test> <!-- Test7(failed) -->
+  <test thread-count="5" parallel="classes" name="Test8(failed)">
+    <classes>
+      <class name="Testcases.TC24_Download_Invoice_after_purchase_order">
+        <methods>
+          <include name="Downloadainvoice"/>
+          <include name="close"/>
+          <include name="Initilaize"/>
+        </methods>
+      </class> <!-- Testcases.TC24_Download_Invoice_after_purchase_order -->
+      <class name="Testcases.TC23_Verify_Address_Details_Checkout_Page">
+        <methods>
+          <include name="Initilaize"/>
+          <include name="close"/>
+          <include name="AddressOnCheckoutPage"/>
+        </methods>
+      </class> <!-- Testcases.TC23_Verify_Address_Details_Checkout_Page -->
+    </classes>
+  </test> <!-- Test8(failed) -->
+  <test thread-count="5" parallel="classes" name="Test9(failed)">
+    <classes>
+      <class name="Testcases.TC25_Verify_Scroll_Up_Down_Functionality_withArrow">
+        <methods>
+          <include name="Initilaize"/>
+          <include name="Close"/>
+          <include name="ScrollUpwithBtn"/>
+        </methods>
+      </class> <!-- Testcases.TC25_Verify_Scroll_Up_Down_Functionality_withArrow -->
+    </classes>
+  </test> <!-- Test9(failed) -->
+</suite> <!-- Failed suite [Suite] -->
