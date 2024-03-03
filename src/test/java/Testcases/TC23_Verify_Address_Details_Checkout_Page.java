@@ -97,6 +97,5 @@ public class TC23_Verify_Address_Details_Checkout_Page {
 	void close()
 	{
 		driver.close();
-		driver.quit();
 	}
 }

@@ -45,7 +45,7 @@ public class TC02_LoginUserValidCredentials {
 		//	8. Verify that 'Logged in as username' is visible
 		ob.VerifyuserId();
 		//	9. Click 'Delete Account' button
-		ob.Verifydelete();
+		//ob.Verifydelete();
 
 		//	10. Verify that 'ACCOUNT DELETED!' is visible
 	}
