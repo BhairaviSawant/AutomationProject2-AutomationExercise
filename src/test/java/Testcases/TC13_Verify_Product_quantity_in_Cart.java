@@ -1,7 +1,11 @@
 package Testcases;
 
+import java.io.File;
+import java.util.HashMap;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -17,6 +21,16 @@ public class TC13_Verify_Product_quantity_in_Cart {
 
 	@BeforeTest
 	void initialize() throws InterruptedException {
+		ChromeOptions opt = new ChromeOptions();
+		opt.addExtensions( new File ("./Extensions/AddBlockerPlusextension.crx"));
+		opt.addArguments("--disable-notifications");
+
+		// Set user preferences to disable autofill profile
+		opt.setExperimentalOption("prefs",
+				new HashMap<String, Object>() {{
+					put("autofill.profile_enabled", false);
+				}});
+		opt.addArguments("--disable-save-password-bubble");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://automationexercise.com/");

@@ -1,5 +1,6 @@
 package pageElementsFile;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -7,10 +8,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RecommendedItems {
 
 	private WebDriver driver;
+	WebDriverWait wait;
+
 
 
 	@FindBy(xpath ="//h2[contains(text(), 'recommended items')]")
@@ -34,6 +39,8 @@ public class RecommendedItems {
 	public RecommendedItems(WebDriver driver){
 		this.driver = driver;
 		PageFactory.initElements(driver,this);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
 	}
 
 	public boolean isRecommendedItemsVisible() {
@@ -45,8 +52,8 @@ public class RecommendedItems {
         for (WebElement productImage :RecommendedAddToCartButtons ) {
             System.out.println("Adding product: " + productImage.getText() + " to cart...");
             productImage.click();
-            Thread.sleep(1000);
-        	continueShopButton.click();
+            wait.until(ExpectedConditions.visibilityOf(continueShopButton));
+            continueShopButton.click();
 
         }
     }

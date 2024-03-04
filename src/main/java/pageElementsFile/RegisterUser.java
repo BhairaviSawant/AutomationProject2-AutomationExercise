@@ -1,15 +1,20 @@
 package pageElementsFile;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class RegisterUser {
 
 	private WebDriver driver;
+	WebDriverWait wait;
 
 	@FindBy(xpath ="//a[@href='/login']")
 	WebElement SignupBtn;
@@ -110,6 +115,8 @@ public class RegisterUser {
 
 	public RegisterUser(WebDriver driver){
 		PageFactory.initElements(driver,this); // test Object
+		wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
 	}
 
 	public void verifyHome(String Actualtitle)
@@ -141,6 +148,7 @@ public class RegisterUser {
 	public void verifyHeadingAccountInfo()
 	{
 		String Exptitle = "ENTER ACCOUNT INFORMATION";
+		wait.until(ExpectedConditions.visibilityOf(VerifyText));
 
 		System.out.println("Text visible is :"+VerifyText.getText());
 
@@ -149,7 +157,9 @@ public class RegisterUser {
 
 	public void EnterAccountInfo(String Name, String Email, String Pwd) throws InterruptedException
 	{
-		Thread.sleep(3000);
+		
+		wait.until(ExpectedConditions.visibilityOf(Radio));
+
 		Radio.click();
 		//NAME.sendKeys(Name);
 		//EMAIL.sendKeys(Email);
@@ -245,9 +255,8 @@ public class RegisterUser {
 		System.out.println("Text visible is :"+UserExistsText.getText());
 
 		Assert.assertEquals(UserExistsText.getText(), Exptitle, "Email Address already exist! Not present");
-
-
+		
+		
 	}
-
 
 }

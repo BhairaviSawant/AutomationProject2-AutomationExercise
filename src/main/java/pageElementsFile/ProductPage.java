@@ -1,5 +1,6 @@
 package pageElementsFile;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -8,12 +9,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class ProductPage {
 
 	private WebDriver driver;
     private Actions actions;
+    WebDriverWait wait;
 
 
 	@FindBy(xpath ="//a[@href='/products']")
@@ -96,12 +100,13 @@ public class ProductPage {
     private WebElement VerifyThankYouMessage;
 
 
-  //input[@id='name']
-
 	public ProductPage(WebDriver driver){
 		this.driver = driver;
 		 this.actions = new Actions(driver);
 		PageFactory.initElements(driver,this);
+		
+		wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
 	}
 
 	public void ClickProduct()
@@ -112,6 +117,8 @@ public class ProductPage {
 	public void VerifyProductpage()
 	{
 		String ExpectedText = "ALL PRODUCTS";
+		wait.until(ExpectedConditions.visibilityOf(productText));
+
 		Assert.assertEquals(productText.getText(), ExpectedText, "Text not visible");
 	}
 
@@ -131,8 +138,9 @@ public class ProductPage {
         for (int i = 0; i < productTitles.size(); i++) {
             System.out.println("Adding product: " + productTitles.get(i).getText() + " to cart...");
             addToCartButtons.get(i).click();
-            Thread.sleep(1000);
-        	continueShopButton.click();
+    		wait.until(ExpectedConditions.visibilityOf(continueShopButton));
+
+            continueShopButton.click();
 
         }
     }
@@ -166,7 +174,8 @@ public class ProductPage {
 	public void FirstProductAddToCart() throws InterruptedException {
 
 		actions.moveToElement(firstProductCartButton).perform();
-		Thread.sleep(1000);
+		wait.until(ExpectedConditions.visibilityOf(AddtoCartOneButton));
+
 		AddtoCartOneButton.click();
     }
 
@@ -176,10 +185,11 @@ public class ProductPage {
     }
     public void AddFirstProducttoCart() throws InterruptedException {
     AddtoCartOne.click();
-    Thread.sleep(2000);
+   
     }
     public void clickContinueShopBTN() throws InterruptedException {
-    	Thread.sleep(3000);
+		wait.until(ExpectedConditions.visibilityOf(continueShopButton));
+
     	continueShopButton.click();
     }
 
@@ -212,6 +222,8 @@ public class ProductPage {
 
     public void viewProduct() {
     	Viewprodbtn.click();
+		wait.until(ExpectedConditions.visibilityOf(Productinfo));
+
 		System.out.println(" Product details : "+"\n"+Productinfo.getText());
 
     }
@@ -231,18 +243,13 @@ public class ProductPage {
     	EnterNameinReviewForm.sendKeys(Name);
     	EnterEmailonReviewForm.sendKeys(Email);
     	EnterReviewonReviewForm.sendKeys(review);
-    	Thread.sleep(3000);
-    	ClickSubmitonReviewForm.click();
-
+		wait.until(ExpectedConditions.visibilityOf(ClickSubmitonReviewForm));
+		ClickSubmitonReviewForm.click();
     }
 
     public void VerifyThankYouMessage()
     {
-    	//
-
     	String ExpectedText = "Thank you for your review.";
 		Assert.assertEquals(VerifyThankYouMessage.getText(), ExpectedText, "Text not visible");
-
-
     }
 }
